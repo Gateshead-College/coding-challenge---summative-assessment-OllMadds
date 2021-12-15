@@ -17,9 +17,8 @@ public class Main {
 
     public static void main(String[] args) {
         Main m = new Main();
-        m.menu();
         m.stockList();
-        m.displayStockList();
+        m.menu();
     }
 
     private void stockList() {
@@ -64,6 +63,8 @@ public class Main {
             case 4:
                deleteStockItem();
                 break;
+            case 5:
+                exitApp();
             default:
                 System.out.println("Input not recognised, please try again.");
                 break;
@@ -108,6 +109,7 @@ public class Main {
                 updateStockItem();
             }
         }
+        menu();
     }
 
     private void addStockItem(){
@@ -123,6 +125,7 @@ public class Main {
         System.out.println("Number in stock: ");
         int numInStock = Integer.parseInt(new Scanner(System.in).nextLine());
         stk.add(new Stock(name, price, manufacturer, id, numInStock));
+        menu();
     }
     private void deleteStockItem() {
         System.out.println("Which product would you like to remove?");
@@ -130,9 +133,15 @@ public class Main {
         for (Stock s: stk) {
             System.out.println(count + " - " + s.name);
             count ++;
+            menu();
         }
         int choice = Integer.parseInt(new Scanner(System.in).nextLine());
         stk.remove(choice - 1);
+    }
+    private void exitApp() {
+        Initialise.writeData(stk);
+        stk.clear();
+        exit = true;
     }
 }
 

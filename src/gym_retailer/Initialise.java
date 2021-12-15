@@ -17,10 +17,10 @@ public class Initialise {
             ioEx.printStackTrace();
         }
     }
-    public static void writeData(ArrayList<Stock> stocks) {
+    public static void writeData(ArrayList<Stock> stk) {
         try {
             FileWriter writer = new FileWriter(stockFile);
-            for (Stock s: stocks) {
+            for (Stock s: stk) {
                 writer.write(s.id + ", " + s.manufacturer + ", " + s.name + ", " + s.price + ", " + s.numInStock);
                 writer.write("\n");
             }
@@ -56,10 +56,10 @@ public class Initialise {
         return s;
     }
     public ArrayList<Stock> getStocks (ArrayList<String> stockStrings) {
-        ArrayList<Stock> stocks = new ArrayList<>();
+        ArrayList<Stock> stk = new ArrayList<>();
         for (String s : stockStrings) {
-            stocks.add(getStockFromString(s));
+            stk.add(getStockFromString(s));
         }
-        return stocks;
+        return stk;
     }
 }
