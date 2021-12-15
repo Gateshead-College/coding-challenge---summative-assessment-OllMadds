@@ -4,10 +4,10 @@ public class Stock {
     String name;
     double price;
     String manufacturer;
-    String id;
+    int id;
     int numInStock;
 
-    public Stock(String name, double price, String manufacturer, String id, int numInStock){
+    public Stock(String name, double price, String manufacturer, int id, int numInStock){
         this.name = name;
         this.price = price;
         this.manufacturer = manufacturer;
@@ -34,10 +34,10 @@ public class Stock {
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
-    public String getId() {
+    public int getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
     public int getNumInStock() {
