@@ -14,37 +14,5 @@ public class Stock {
         this.id = id;
         this.numInStock = numInStock;
     }
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public double getPrice() {
-        return price;
-    }
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getManufacturer() {
-        return manufacturer;
-    }
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public int getNumInStock() {
-        return numInStock;
-    }
-    public void setNumInStock(int numInStock) {
-        this.numInStock = numInStock;
-    }
     }
 

@@ -4,22 +4,21 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class Main {
+public class MainMenu {
     ArrayList<Stock> stk = new ArrayList<>();
     private boolean exit = false;
+    User currentUser;
 
-    public void getData() {
+
+    public void getData(User u) {
+        this.currentUser = u;
         Initialise init = new Initialise();
-        while(!exit)
+        while(!exit) {
+            stk = init.getStocks(init.readFile(Initialise.stockFile));
             menu();
+        }
     }
 
-
-    public static void main(String[] args) {
-        Main m = new Main();
-        m.stockList();
-        m.menu();
-    }
 
     private void stockList() {
         stk.add(new Stock("Olympic Barbell", 294.70, "Rogue", 1001, 99));
@@ -37,14 +36,15 @@ public class Main {
 
     }
 
-    private void menu() {
+    public void menu() {
         Scanner scn = new Scanner(System.in);
         System.out.println("Welcome! What action would you like to take?");
         System.out.println("1 - View stock available");
         System.out.println("2 - Edit a stocked item");
         System.out.println("3 - Add a new item to the Stock list");
         System.out.println("4 - Delete an item from the stock list");
-        System.out.println("5 - Exit");
+        System.out.println("5 - Edit Account Details");
+        System.out.println("6 - Exit");
         int choice = Integer.parseInt(new Scanner(System.in).nextLine());
         handleChoice(choice);
     }
@@ -64,6 +64,8 @@ public class Main {
                deleteStockItem();
                 break;
             case 5:
+                editAccount();
+            case 6:
                 exitApp();
             default:
                 System.out.println("Input not recognised, please try again.");
@@ -142,6 +144,91 @@ public class Main {
         Initialise.writeData(stk);
         stk.clear();
         exit = true;
+    }
+    private void editAccount() {
+
+        System.out.println("Which detail would you like to edit?");
+        System.out.println("1 - Username");
+        System.out.println("2 - Password");
+        System.out.println("3 - Forename");
+        System.out.println("4 - Surname");
+        getNewValue(currentUser, Integer.parseInt(new Scanner(System.in).nextLine()));
+    }
+    private void getNewValue(User u, int i) {
+        switch (i) {
+            case 1 -> updateUsername(u);
+            case 2 -> updatePassword(u);
+            case 3 -> updateForename(u);
+            case 4 -> updateSurname(u);
+    }
+}
+private void updateUsername(User u) {
+    System.out.println("The current username is: " + u.getUsername());
+    System.out.println("Please enter a new username:");
+    String newUsername = new Scanner(System.in).nextLine();
+    System.out.println("Are you sure you'd like to replace '" + u.getUsername() + "' with '" + newUsername + "'?");
+    if (new Scanner(System.in).nextLine().equalsIgnoreCase("y")) {
+        u.setUsername(newUsername);
+    }
+    System.out.println("Username has been changed to: " + newUsername);
+    System.out.println("Would you like to change any more details?");
+    if (new Scanner(System.in).nextLine().equalsIgnoreCase("y")) {
+        editAccount();
+    }
+    else {
+        menu();
+    }
+    }
+    private void updatePassword(User u) {
+        System.out.println("The current password is: " + u.getPassword());
+        System.out.println("Please enter a new password:");
+        String newPassword = new Scanner(System.in).nextLine();
+        System.out.println("Are you sure you'd like to replace '" + u.getPassword() + "' with '" + newPassword + "'?");
+        if (new Scanner(System.in).nextLine().equalsIgnoreCase("y")) {
+            u.setPassword(newPassword);
+        }
+        System.out.println("Password has been changed to: " + newPassword);
+        System.out.println("Would you like to change any more details?");
+        if (new Scanner(System.in).nextLine().equalsIgnoreCase("y")) {
+            editAccount();
+        }
+        else {
+            menu();
+        }
+    }
+    private void updateForename(User u) {
+        System.out.println("The current forename is: " + u.getForename());
+        System.out.println("Please enter a new forename:");
+        String newForename = new Scanner(System.in).nextLine();
+        System.out.println("Are you sure you'd like to replace '" + u.getForename() + "' with '" + newForename + "'?");
+        if (new Scanner(System.in).nextLine().equalsIgnoreCase("y")) {
+            u.setForename(newForename);
+        }
+        System.out.println("Forename has been changed to: " + newForename);
+        System.out.println("Would you like to change any more details?");
+        if (new Scanner(System.in).nextLine().equalsIgnoreCase("y")) {
+            editAccount();
+        }
+        else {
+            menu();
+        }
+    }
+    private void updateSurname(User u) {
+        System.out.println("The current surname is:");
+        System.out.println("Please enter a new surname:");
+        String newSurname = new Scanner(System.in).nextLine();
+        System.out.println("Are you sure you'd like to replace '" + u.getSurname() + "' with '" + newSurname + "'?");
+        if (new Scanner(System.in).nextLine().equalsIgnoreCase("y")) {
+            u.setSurname(newSurname);
+        }
+        System.out.println("Surname has been changed to: " + newSurname);
+        System.out.println("Would you like to change any more details?");
+        if (new Scanner(System.in).nextLine().equalsIgnoreCase("y")) {
+            editAccount();
+        }
+        else {
+            menu();
+        }
     }
 }
 

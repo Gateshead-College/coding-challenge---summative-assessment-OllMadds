@@ -1,11 +1,10 @@
 package gym_retailer;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Initialise {
-    static File stockFile = new File("C:/Users/OllieM/Desktop/Stock.txt");
+    static File stockFile = new File("C:/Users/ollie.maddison/Desktop/Stock.txt");
     public void createFileIfNotExists() {
         try {
             if (!stockFile.isFile()) {
