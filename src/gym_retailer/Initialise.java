@@ -20,7 +20,7 @@ public class Initialise {
         try {
             FileWriter writer = new FileWriter(stockFile);
             for (Stock s: stk) {
-                writer.write(s.id + ", " + s.manufacturer + ", " + s.name + ", " + s.price + ", " + s.numInStock);
+                writer.write(s.name + "," + s.price + "," + s.manufacturer + "," + s.id + "," + s.numInStock);
                 writer.write("\n");
             }
             writer.close();

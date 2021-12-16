@@ -10,6 +10,8 @@ public class Login {
     public static void main(String[] args) {
         Login l = new Login();
         l.users = l.getUsers();
+        MainMenu mm = new MainMenu();
+        mm.stockList();
         while(true)
             l.checkDetails();
     }

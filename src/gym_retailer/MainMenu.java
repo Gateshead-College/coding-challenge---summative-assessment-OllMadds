@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 
 public class MainMenu {
-    ArrayList<Stock> stk = new ArrayList<>();
+    static ArrayList<Stock> stk = new ArrayList<>();
     private boolean exit = false;
     User currentUser;
 
@@ -20,13 +20,14 @@ public class MainMenu {
     }
 
 
-    private void stockList() {
+    public void stockList() {
         stk.add(new Stock("Olympic Barbell", 294.70, "Rogue", 1001, 99));
         stk.add(new Stock("Weight Plate Set", 349.00, "Primal Strength", 1002, 99));
         stk.add(new Stock("20kg Plate Pair", 127.28, "Rogue", 1003, 99));
         stk.add(new Stock("'Change Plates' (Pair of 1.25kg and 2.5kg)", 77, "Rogue", 1004, 99));
         stk.add(new Stock("Flat Bench", 147, "Again Faster", 1005, 99));
         stk.add(new Stock("Adjustable Bench", 242, "Again Faster", 1006, 99));
+        Initialise.writeData(stk);
     }
 
     private void displayStockList() {
@@ -127,6 +128,7 @@ public class MainMenu {
         System.out.println("Number in stock: ");
         int numInStock = Integer.parseInt(new Scanner(System.in).nextLine());
         stk.add(new Stock(name, price, manufacturer, id, numInStock));
+        Initialise.writeData(MainMenu.stk);
         menu();
     }
     private void deleteStockItem() {
